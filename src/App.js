@@ -1,7 +1,9 @@
+import React, { useState } from 'react';
+
 import Expenses from './components/Expenses/Expenses';
 import NewExpense from './components/NewExpense/NewExpense';
-const App = () => {
-const expenses = [
+
+const DUMMY_EXPENSES = [
     {
       id: 'e1',
       title: 'Toilet Paper',
@@ -23,9 +25,17 @@ const expenses = [
     },
   ];
 
+const App = () => {
+const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
+
+
 const addExpenseHandler = (expenseData) => {
-    console.log(expenseData);
-    console.log("in App.js");
+    //since we want to know the previous state of the dummy expenses
+    //we have to use the previousExpenses and update the state of previous and the new expense.
+    //setExpenses([expenseData, ...expenses ]);
+    setExpenses( (prevExpenses) => {
+        return [expenseData, ...prevExpenses];
+    });
 };
 
   return (
