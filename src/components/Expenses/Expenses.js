@@ -16,6 +16,22 @@ const Expenses = (props) => {
     return expense.date.getFullYear().toString() === filteredYear;
   });
 
+  //you can even create the content here and pass the variable down to the expression
+  // let expenseContent = <p>No results found!</p>;
+
+//we can even check here and down in jsx there we just apply only the expenseContent variable
+//  if (filteredExpenses.length > 0) {
+//    expenseContent = filteredExpenses.map((expense) => (
+//      <ExpenseItem
+//        title={expense.title}
+//        amount={expense.amount}
+//        date={expense.date}
+//        key={expense.id}
+//      />
+//    ));
+//  }
+
+
   return (
     <div>
       <Card className='expenses'>
@@ -23,15 +39,17 @@ const Expenses = (props) => {
           selected={filteredYear}
           onChangeFilter={filterChangeHandler}
         />
-        {filteredExpenses.map((expense) => (
-          <ExpenseItem
-            title={expense.title}
-            amount={expense.amount}
-            date={expense.date}
-            key={expense.id}
-          />
-        ))}
-        ;
+
+        {filteredExpenses.length === 0 && <p>No results found!</p>}
+        {filteredExpenses.length > 0 &&
+          filteredExpenses.map((expense) => (
+            <ExpenseItem
+              title={expense.title}
+              amount={expense.amount}
+              date={expense.date}
+              key={expense.id}
+            />
+          ))}
       </Card>
     </div>
   );
