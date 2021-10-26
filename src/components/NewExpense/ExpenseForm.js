@@ -40,14 +40,14 @@ const ExpenseForm = (props) => {
   };
 
   const CancelHandler = (e) => {
-        props.onCancelClicked(false);
-    }
+    props.onCancelClicked(false);
+  };
 
   const SubmitHandler = (e) => {
     e.preventDefault();
     const expenseData = {
       title: enteredTitle,
-      amount: enteredAmount,
+      amount: +enteredAmount,  //enforce a number conversion
       date: new Date(enteredDate),
     };
     //console.log(expenseData);
@@ -92,7 +92,9 @@ const ExpenseForm = (props) => {
         </div>
       </div>
       <div className='new-expense__actions'>
-        <button type="button" onClick={CancelHandler}>Cancel</button>
+        <button type='button' onClick={CancelHandler}>
+          Cancel
+        </button>
         <button type='submit'>Add Expense</button>
       </div>
     </form>
