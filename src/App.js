@@ -41,7 +41,6 @@ const addExpenseHandler = (expenseData) => {
   return (
     <div>
       <NewExpense onAddExpense={addExpenseHandler} />
-
       <Expenses items={expenses}></Expenses>
 
     </div>
